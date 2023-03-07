@@ -1,7 +1,7 @@
 //Reto 2.
 //Crear un objeto .
 
-let object = {
+ let object = {
     name: "Celia",
     surname: "Sánchez",
     age: "25"

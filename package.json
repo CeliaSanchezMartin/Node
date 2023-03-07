@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "\"# Node\"",
+  "main": "reto1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CeliaSanchezMartin/Node.git"
+  },
+  "author": "Celia Sánchez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CeliaSanchezMartin/Node/issues"
+  },
+  "homepage": "https://github.com/CeliaSanchezMartin/Node#readme"
+}
