@@ -20,7 +20,7 @@ rl.question("¿Cómo te llamas?", (name) => {
         fs.writeFile("reto3.json", JSON.stringify(newObj),
         function (err) {
             if(err){
-                return console.error(err);
+                return console.log(err);
             }
             console.log("Hola, " + newObj.name + " " + newObj.surname + " eres jovencíííísima");
         }

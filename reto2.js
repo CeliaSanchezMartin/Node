@@ -11,7 +11,7 @@ const fs = require("fs");
 
 fs.writeFile("reto2.json", JSON.stringify(object),function(err) {
     if(err) {
-        return console.error(err);
+        return console.log(err);
 
     }
     console.log("El objeto tiene este contenido:");
