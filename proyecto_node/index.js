@@ -1,5 +1,6 @@
-import { readConsole } from "./readConsole";
-import { writeAndRead } from "./writeAndReadObject";
+let read = require("./readConsole");
+let write = require("./writeAndReadObject")
 
-readConsole(console.log);
-writeAndRead("")
+read.readConsole(function(obj){
+    write.writeAndRead("person.json", obj)
+})

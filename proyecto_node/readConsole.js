@@ -4,7 +4,7 @@ const readline = require("readline")
 let rl = readline.createInterface(process.stdin, process.stdout);
 
 
-export function readConsole(callback){
+function readConsole(callback){
     let obj = {
         name: "",
         surname: "",
@@ -20,3 +20,4 @@ export function readConsole(callback){
     })
 }
 
+module.exports = {readConsole}
