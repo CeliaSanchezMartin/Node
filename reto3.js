@@ -18,11 +18,11 @@ rl.question("¿Cómo te llamas?", (name) => {
      rl.question("¿Cuántos años tienes?", (age) => {
         let newObj = {name, surname, age};
         fs.writeFile("reto3.json", JSON.stringify(newObj),
-        function (err) {
+        function (err, data) {
             if(err){
                 return console.log(err);
             }
-            console.log("Hola, " + newObj.name + " " + newObj.surname + " eres jovencíííísima");
+            console.log("Hola, " + JSON.parse(data.name) + " " + JSON.parse(data.surname) + " eres jovencíííísima");
         }
         );
     });

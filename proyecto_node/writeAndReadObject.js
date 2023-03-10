@@ -7,7 +7,7 @@ function writeAndRead(path, object){
             if(err){
                 console.log(err);
             } else {
-                console.log("El contenico del objeto es: ");
+                console.log("El contenido del objeto es: ");
                 console.log(JSON.parse(data));
             }
         } )
