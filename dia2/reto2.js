@@ -7,6 +7,7 @@ let object = {
 }
 
 const fs = require("fs/promises");
+
 fs.writeFile("reto2.json", JSON.stringify(object))
 .then( () => {
     return fs.readFile("reto2.json", "utf-8")
