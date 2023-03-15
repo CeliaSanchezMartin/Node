@@ -7,7 +7,7 @@ let object = {
 }
 
 const fs = require("fs/promises");
-
+/*
 fs.writeFile("reto2.json", JSON.stringify(object))
 .then( () => {
     return fs.readFile("reto2.json", "utf-8")
@@ -18,3 +18,18 @@ fs.writeFile("reto2.json", JSON.stringify(object))
 .catch(err => {
     console.log(err);
 });
+
+*/
+
+async function asyncAwait(){
+    try {
+    await fs.writeFile("reto2.json", JSON.stringify(object))
+    const nuevo = await fs.readFile("reto2.json", "utf-8")
+
+    console.log(JSON.parse(nuevo));
+    } catch (error) {
+        console.log(error);
+    } 
+}
+
+asyncAwait();

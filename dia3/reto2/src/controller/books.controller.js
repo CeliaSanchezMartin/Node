@@ -1,9 +1,9 @@
-const { response } = require("../app");
+//const { response } = require("../app");
 const Book = require("../models/book")
 //let usuario = null;
 let book = null
-let libro = new Books(1,1,"La Verdad Sobre el caso de Harry Quebert","Tapa Blanda","Joël Dicker",22,"https://imagessl5.casadellibro.com/a/l/t7/65/9788420414065.jpg");
-let libro2 = new Books(2,1,"Esperando al Diluvio","Tapa Blanda","Dolores Redondo",21.75,"https://imagessl9.casadellibro.com/a/l/t7/79/9788423362479.jpg");
+let libro = new Book(1,"La Verdad Sobre el caso de Harry Quebert","Tapa Blanda","Joël Dicker",22,"https://imagessl5.casadellibro.com/a/l/t7/65/9788420414065.jpg");
+let libro2 = new Book(2,"Esperando al Diluvio","Tapa Blanda","Dolores Redondo",21.75,"https://imagessl9.casadellibro.com/a/l/t7/79/9788423362479.jpg");
 let libros = [libro, libro2]
 
 function getStart(request, response){
@@ -13,10 +13,21 @@ function getStart(request, response){
 
 function getBook(request, response){
     let respuesta;
-    if(libros != null){
-        respuesta = {error: false, codigo: 200, data: libros};
+    let id = request.query.id;
+    if (id != null){
+        let librodevuelto = libros.find(book => book.id_book == id );
+        console.log(librodevuelto);
+        if(libros.lenght != 0 && (librodevuelto != undefined)){
+            respuesta = {error: false, codigo: 200, data: librodevuelto}
+        } else {
+            respuesta = {error: false, codigo: 200, data: libros}
+        } 
     } else {
-        respuesta = {error: true, codigo: 200, mensaje: "El libro no existe."}
+        if(libros != null){
+            respuesta = {error: false, codigo: 200, data: libros};
+        } else {
+            respuesta = {error: true, codigo: 200, mensaje: "El libro no existe."}
+        }
     }
 
     response.send(respuesta);
@@ -24,13 +35,14 @@ function getBook(request, response){
 
 function getOneBook(request, response){
     let id = request.query.id;
+    console.log(id);
 
     let librodevuelto = libros.find(book => book.id_book == id );
 
     let respuesta;
 
     if(libros.lenght != 0 && (librodevuelto != undefined)){
-        respuesta = {error: false, codigo: 200, data: book}
+        respuesta = {error: false, codigo: 200, data: librodevuelto}
     } else {
         respuesta = {error: false, codigo: 200, data: libros}
     }
@@ -52,10 +64,10 @@ function postBook(request, response){
     response.send(respuesta);
 }
 
-function putBook(request){
+function putBook(request, response){
     let  modifiedbook = libros.findIndex( book => 
         book.id_book == request.body.id_book)
-    
+    console.log(modifiedbook);
     let respuesta;
     if(modifiedbook != -1){
         libros[modifiedbook].id_book = request.body.id_book;

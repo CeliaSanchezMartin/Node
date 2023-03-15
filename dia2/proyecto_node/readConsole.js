@@ -15,7 +15,7 @@ function pregunta (pregunta) {
     })
     return question;
 };
-
+/*
 function readConsole(callback){
     let obj = {
         name: "",
@@ -39,5 +39,24 @@ function readConsole(callback){
         console.log(err);
     })
 };
+*/
 
+async function readConsole(callback){
+    let obj = {
+        name: "",
+        surname: "",
+        age: 0
+    }
+    try {
+        obj.name = await pregunta("¿Cómo te llamas?");
+        obj.surname = await pregunta ("¿Cuál es tu apellido?");
+        obj.age = await pregunta ("¿Cuántos años tienes?");
+
+        await callback(obj)
+    }
+
+    catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {readConsole}

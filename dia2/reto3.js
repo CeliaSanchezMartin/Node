@@ -22,7 +22,7 @@ let object = {
     surname: "Sánchez",
     age: 25
 };
-
+/*
 
 pregunta("¿Cómo te llamas?")
 .then((name) => {
@@ -47,3 +47,20 @@ pregunta("¿Cómo te llamas?")
 .catch(err => {
     console.log(err);
 })
+*/
+async function asyncAwait(){
+    try{
+        object.name = await pregunta("¿Cómo te llamas?");
+        object.surname = await pregunta ("¿Cuál es tu apellido?");
+        object.age = await pregunta ("¿Cuántos años tienes?");
+
+        await fs.writeFile("reto3.json", JSON.stringify(object));
+        const obj = await fs.readFile("reto3.json", "utf-8");
+        console.log(JSON.parse(obj));
+    }
+    catch (err) {
+        console.log(err);
+    }
+};
+
+asyncAwait();

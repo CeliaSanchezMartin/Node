@@ -1,5 +1,5 @@
 const fs = require("fs/promises");
-
+/*
 function writeAndRead(path, object){
     fs.writeFile(path, JSON.stringify(object))
     .then(() => {
@@ -13,5 +13,15 @@ function writeAndRead(path, object){
         console.log(err);
     })
 }
-
+*/
+async function writeAndRead(path, object){
+    try{
+        await fs.writeFile(path, JSON.stringify(object))
+        const obj = await fs.readFile(path, "utf-8")
+        console.log(JSON.parse(obj));
+    }
+    catch (err) {
+        console.log(err);
+    }
+}
 module.exports = {writeAndRead}
